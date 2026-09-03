@@ -1,0 +1,35 @@
+name: Bug report
+description: 재현 가능한 결함 또는 평가 오염 보고
+title: "[Bug] "
+labels: ["type: bug"]
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: 관찰된 현상
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 방법
+      description: commit, config, corpus tag, 반복 번호를 포함하세요.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대 동작
+    validations:
+      required: true
+  - type: dropdown
+    id: contamination
+    attributes:
+      label: 평가 오염 가능성
+      options:
+        - 없음
+        - 있음 — 새 결과 파일로 재실행 필요
+        - 모름 — 감사 필요
+    validations:
+      required: true
+

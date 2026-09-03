@@ -1,0 +1,32 @@
+name: Implementation
+description: 파이프라인·하네스·라우터 구현 작업
+title: "[Implementation] "
+labels: ["type: implementation"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: 목적
+      description: 이 구현이 검증할 목표 또는 실험을 작성하세요.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 범위
+      description: 포함·제외할 동작과 수정할 디렉터리를 작성하세요.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 완료 조건
+      value: |
+        - [ ] 파라미터가 config에 정의됨
+        - [ ] 테스트가 추가됨
+        - [ ] 재현 명령이 문서화됨
+        - [ ] sources/를 변경하지 않음
+        - [ ] answers/를 검색 입력에 포함하지 않음
+    validations:
+      required: true
+

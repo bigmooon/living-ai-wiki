@@ -1,0 +1,4 @@
+{"question_id":"example-pinpoint-001","question":"예시 설정값은 무엇인가?","type":"pinpoint","gold_source_ids":["ADR-EXAMPLE"],"answerable":true}
+{"question_id":"example-synthesis-001","question":"예시 구조를 선택한 이유는 무엇인가?","type":"synthesis","gold_source_ids":["ADR-EXAMPLE","ADR-EXAMPLE-2"],"answerable":true}
+{"question_id":"example-unanswerable-001","question":"코퍼스에 없는 결정은 무엇인가?","type":"pinpoint","gold_source_ids":[],"answerable":false}
+

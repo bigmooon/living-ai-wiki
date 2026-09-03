@@ -1,0 +1,28 @@
+name: Repository guard
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  protect-frozen-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Block sources changes after snapshot
+        run: python scripts/verify_repository_guards.py "${{ github.event.pull_request.base.sha }}"
+      - name: Block edits to existing result files
+        shell: bash
+        run: |
+          set -euo pipefail
+          changes="$(git diff --name-status "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}" -- evals/results/)"
+          if [[ -n "$changes" ]] && echo "$changes" | awk '$1 != "A" { found=1 } END { exit !found }'; then
+            echo "Existing evals/results files are append-only."
+            echo "$changes"
+            exit 1
+          fi
+

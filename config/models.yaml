@@ -1,0 +1,21 @@
+schema_version: 1
+
+embedding:
+  provider: TBD
+  model: TBD
+  rationale: "착수 전에 한국어 ADR 검색 품질, 비용, 재현 가능성을 비교해 확정"
+
+generation:
+  provider: TBD
+  model: TBD
+  rationale: "wiki claim 생성과 구조화 출력 준수율을 시범 데이터로 확인해 확정"
+
+judge:
+  provider: TBD
+  model: TBD
+  rationale: "self-preference를 줄이기 위해 generation과 다른 계열로 확정"
+
+runtime:
+  repetitions: 3
+  temperature: 0
+

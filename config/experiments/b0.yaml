@@ -1,0 +1,33 @@
+schema_version: 1
+experiment_id: b0-full-context
+description: "원본 ADR 전체 컨텍스트 기준선"
+
+corpus:
+  directory: sources
+  snapshot_tag: TBD
+  manifest: config/corpus-manifest.json
+
+dataset:
+  path: evals/questions.jsonl
+  question_types:
+    - pinpoint
+    - synthesis
+    - multihop
+
+retrieval:
+  strategy: full_context
+  top_k: null
+
+evaluation:
+  repetitions: 3
+  metrics:
+    - answer_accuracy
+    - faithfulness
+    - latency_ms
+    - input_tokens
+    - output_tokens
+
+output:
+  directory: evals/results
+  overwrite: false
+

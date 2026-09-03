@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+.env
+.DS_Store
+.idea/
+.vscode/
+
+# Generated indices and local databases
+.chroma/
+data/indexes/
+
+# Result files are intentionally tracked when selected for an experiment.
+# Never add evals/results/*.json here: append-only history belongs in git.
+

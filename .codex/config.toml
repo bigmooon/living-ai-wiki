@@ -1,0 +1,8 @@
+# Project-scoped Codex settings. Codex loads this file only for a trusted project.
+# Model is intentionally omitted so this repository does not pin a stale Codex model.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+network_access = false
+

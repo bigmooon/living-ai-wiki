@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source_changes="$(git diff --cached --name-only --diff-filter=ACMRD -- sources/)"
+if [[ -n "$source_changes" ]]; then
+  echo "Commit rejected: sources/ is frozen and read-only." >&2
+  echo "$source_changes" >&2
+  exit 1
+fi
+
+result_changes="$(git diff --cached --name-status -- evals/results/)"
+if [[ -n "$result_changes" ]] && echo "$result_changes" | awk '$1 != "A" { found=1 } END { exit !found }'; then
+  echo "Commit rejected: existing evals/results files cannot be modified, renamed, or deleted." >&2
+  echo "$result_changes" >&2
+  exit 1
+fi
+

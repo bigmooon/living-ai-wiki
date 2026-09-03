@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "living-ai-wiki"
+version = "0.1.0"
+description = "A reproducible evaluation of retrieval strategies over temporally superseding ADRs."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "chromadb>=1.0,<2",
+  "fastapi>=0.116,<1",
+  "gitpython>=3.1,<4",
+  "langgraph>=0.6,<1",
+  "numpy>=2,<3",
+  "pydantic>=2.11,<3",
+  "pyyaml>=6,<7",
+  "rank-bm25>=0.2,<1",
+  "scikit-learn>=1.7,<2",
+  "typer>=0.16,<1",
+  "uvicorn[standard]>=0.35,<1",
+]
+
+[project.scripts]
+living-wiki = "living_ai_wiki.cli:app"
+
+[dependency-groups]
+dev = [
+  "mypy>=1.17,<2",
+  "pre-commit>=4.3,<5",
+  "pytest>=8.4,<9",
+  "pytest-cov>=6.2,<7",
+  "ruff>=0.12,<1",
+  "types-pyyaml>=6,<7",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["living_ai_wiki"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["living_ai_wiki", "harness"]

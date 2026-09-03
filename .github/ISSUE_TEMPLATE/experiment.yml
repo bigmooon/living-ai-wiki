@@ -1,0 +1,39 @@
+name: Experiment
+description: config에서 시작해 append-only 결과 JSON으로 끝나는 실험 작업
+title: "[Experiment] "
+labels: ["type: experiment"]
+body:
+  - type: input
+    id: hypothesis
+    attributes:
+      label: 가설
+      description: 무엇이 어떤 조건에서 더 나을 것으로 예상하는지 작성하세요.
+    validations:
+      required: true
+  - type: input
+    id: config
+    attributes:
+      label: Config 경로
+      placeholder: config/experiments/a1-hybrid.yaml
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: 지표와 판정 기준
+      description: 질문 유형별 지표, 반복 횟수, 채택·기각 기준을 작성하세요.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 완료 조건
+      value: |
+        - [ ] config가 버전 관리됨
+        - [ ] 동일 config 반복 실행 완료
+        - [ ] 새 결과 JSON이 생성됨(기존 결과 미수정)
+        - [ ] 평균과 분산이 보고됨
+        - [ ] 실패 사례가 기록됨
+    validations:
+      required: true
+
